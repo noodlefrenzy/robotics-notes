@@ -17,18 +17,18 @@ Central navigation hub for robotics and autonomous driving knowledge base.
 
 ## Robotics Deep Dives
 
-- Hardware Acceleration & Transport – `robotics_deep_dive_hardware_acceleration.md`
-- RL Frameworks & Training Pipelines – `robotics_deep_dive_rl_frameworks.md`
-- World & VLM / Foundation Models – `robotics_deep_dive_models_world_vlm.md`
-- Simulation & Digital Twins – `robotics_deep_dive_simulation.md`
-- Planning & Manipulation – `robotics_deep_dive_planning_manipulation.md`
-- Mapping & World Models – `robotics_deep_dive_mapping_world_models.md`
+- [Hardware Acceleration & Transport](robotics_deep_dive_hardware_acceleration.md)
+- [RL Frameworks & Training Pipelines](robotics_deep_dive_rl_frameworks.md)
+- [World & VLM / Foundation Models](robotics_deep_dive_models_world_vlm.md)
+- [Simulation & Digital Twins](robotics_deep_dive_simulation.md)
+- [Planning & Manipulation](robotics_deep_dive_planning_manipulation.md)
+- [Mapping & World Models](robotics_deep_dive_mapping_world_models.md)
 
 ## ADS Deep Dives
 
-- Perception – `ads_deep_dive_perception.md`
-- Prediction – `ads_deep_dive_prediction.md`
-- Planning & Control – `ads_deep_dive_planning_control.md`
+- [Perception](ads_deep_dive_perception.md)
+- [Prediction](ads_deep_dive_prediction.md)
+- [Planning & Control](ads_deep_dive_planning_control.md)
 
 ## Cross-Domain Link Themes
 
