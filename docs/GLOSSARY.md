@@ -76,12 +76,18 @@
 - [BEV Fusion](https://arxiv.org/abs/2203.17270): Multi-modal (camera/LiDAR/radar) feature projection & aggregation into BEV space.
 - [BEVFormer](https://arxiv.org/abs/2203.17270): Temporal deformable attention transformer for BEV feature generation.
 - [Bird's-Eye View (BEV)](https://arxiv.org/abs/2203.17270): Top-down spatial representation aggregating multi-sensor features.
+ - [ASIL (Automotive Safety Integrity Level)](https://en.wikipedia.org/wiki/Automotive_Safety_Integrity_Level): Risk-based classification (A–D) of safety requirements derived from HARA (severity, exposure, controllability) in ISO 26262; drives rigor of development and verification.
+ - [Fail-Operational](https://en.wikipedia.org/wiki/Fail-operational): System property enabling continued (possibly degraded) autonomous function after certain faults, maintaining a safe operational state (contrast with fail-safe immediate shutdown/stop).
+ - [Fail-Safe](https://en.wikipedia.org/wiki/Fail-safe): Design approach ensuring the system transitions to a safe state (e.g., controlled stop) when faults are detected; may reduce capability but prioritizes hazard avoidance.
+ - [Functional Safety](https://en.wikipedia.org/wiki/Functional_safety): Safety achieved by ensuring E/E system functions correctly in response to inputs (including faults); governed in automotive by ISO 26262 (focus on random hardware + systematic faults).
+ - [HARA (Hazard Analysis and Risk Assessment)](https://en.wikipedia.org/wiki/ISO_26262#Hazard_analysis_and_risk_assessment): ISO 26262 process identifying hazardous events, evaluating severity, exposure, controllability to assign ASIL and derive safety goals.
 - [CenterPoint](https://arxiv.org/abs/2006.11275): Anchor-free 3D object detection using center-based representation.
 - [Conditional Value at Risk (CVaR)](https://en.wikipedia.org/wiki/Conditional_value_at_risk): Risk metric: expected loss in the worst α-tail; used for risk-sensitive planning.
 - [Diffusion-based Motion Prediction](https://arxiv.org/abs/2303.12074): Generative denoising approach producing diverse future trajectories (representative paper).
 - [Drivable Area](https://www.nuScenes.org): Segmented region of road surface navigable by the vehicle.
 - [Dynamic Occupancy Grid](https://arxiv.org/abs/2111.12717): Time-varying grid modeling occupancy probability and per-cell motion.
 - [Fallback (Degraded) Mode](https://www.iso.org/standard/81169.html): Safe reduced-capability operational state after critical fault detection (ISO 26262 / ADS safety context).
+ - [ISO 26262](https://www.iso.org/standard/81169.html): Automotive functional safety standard defining lifecycle processes (including HARA, ASIL assignment, safety goals) for E/E systems addressing random & systematic faults.
 - [Higher Order Tracking Accuracy (HOTA)](https://arxiv.org/abs/2009.07736): Tracking metric combining detection, association & localization quality.
 - [Hybrid A*](https://doi.org/10.1109/ROBOT.2008.4543489): Search-based planner combining discrete search with continuous state refinement for kinematic feasibility.
 - [IDF1](https://motchallenge.net/): Multi-object tracking metric emphasizing identity preservation accuracy.
@@ -89,17 +95,24 @@
 - [Lanelet2](https://github.com/fzi-forschungszentrum-informatik/Lanelet2): Open-source HD lane-level map framework.
 - [Lattice Planner](https://ieeexplore.ieee.org/document/5206621): Candidate trajectory generation via structured sampling then cost selection.
 - [Lift-Splat-Shoot](https://arxiv.org/abs/2008.05711): Camera feature lifting & splatting method creating BEV features.
+ - [ODD (Operational Design Domain)](https://en.wikipedia.org/wiki/Operational_design_domain): Bounded set of operating conditions (road types, weather, lighting, speeds, traffic) under which an ADS feature is designed to function safely.
 - [minADE](https://arxiv.org/abs/2005.04259): Minimum average displacement error across predicted trajectory set vs. ground truth.
 - [minFDE](https://arxiv.org/abs/2005.04259): Minimum final displacement error of trajectory endpoints vs. ground truth.
 - [Miss Rate](https://arxiv.org/abs/1906.10840): Fraction of objects/trajectories not sufficiently covered by predictions/detections.
 - [Mode Collapse (Prediction)](https://arxiv.org/abs/2007.06831): Reduction of multi-modal forecast diversity to a single dominant trajectory.
 - [Multiple Object Tracking Accuracy (MOTA)](https://motchallenge.net/): Aggregate multi-object tracking accuracy error metric.
 - [nuScenes Detection Score (NDS)](https://www.nuscenes.org): Composite 3D detection benchmark metric.
+ - [Perception Performance Metrics (Safety)](https://en.wikipedia.org/wiki/Object_detection): Safety-relevant slices of perception quality (e.g., vulnerable road user false negative rate in night rain) used to argue residual risk & trigger SOTIF improvements.
 - [Occupancy Flow](https://arxiv.org/abs/2006.11867): Grid representation predicting future occupancy probability and motion vectors.
 - [Polynomial / Jerk-Minimizing Trajectory](https://arc.aiaa.org/doi/10.2514/3.20031): Use of quintic/septic polynomials optimizing smoothness subject to jerk bounds.
 - [Prediction (Automated Driving)](https://arxiv.org/abs/2005.04259): Estimation of multi-agent future behaviors and trajectories.
+ - [Residual Risk](https://en.wikipedia.org/wiki/Risk_management): Remaining (accepted) risk after mitigations and design improvements; in SOTIF includes unknown unsafe scenarios considered tolerable within ODD constraints.
 - [Responsibility Sensitive Safety (RSS)](https://arxiv.org/abs/1708.06374): Formal driving safety model defining conservative distance & response rules.
+ - [Safety Goal](https://en.wikipedia.org/wiki/ISO_26262): Top-level safety requirement (ASIL-graded) derived from HARA to prevent or control a hazardous event.
+ - [Scenario Taxonomy](https://www.asam.net/standards/detail/openx/): Structured classification (e.g., ASAM OpenSCENARIO/OpenODD) enabling systematic scenario coverage & gap analysis for safety validation.
+ - [SOTIF (Safety of the Intended Functionality)](https://www.iso.org/standard/70939.html): ISO 21448 standard addressing hazards from performance limitations or misuse of intended functionality (no fault present), emphasizing scenario coverage & trigger mitigation.
 - [Social Pooling](https://arxiv.org/abs/1609.04836): Local interaction feature aggregation for trajectory prediction networks.
+ - [Triggering Condition (SOTIF)](https://www.iso.org/standard/70939.html): Combination of environmental & operational factors exposing a performance limitation that can lead to an unsafe behavior without a system fault.
 - [Time-to-Collision (TTC)](https://en.wikipedia.org/wiki/Collision_avoidance_system): Estimated remaining time before collision on current relative motion.
 - [TransFusion](https://arxiv.org/abs/2203.11496): LiDAR-camera transformer fusion for 3D detection.
 - [Tracking (MOT)](https://motchallenge.net/): Maintaining consistent identities & state estimates of dynamic agents over time.
@@ -163,6 +176,13 @@
 53. [ESDF Mapping][ref-esdf]
 54. [A* Search][ref-astar]
 55. [Dynamic A* (D*)][ref-dstar]
+56. [ISO 26262][ref-iso26262]
+57. [ISO 21448 (SOTIF)][ref-sotif]
+58. [Operational Design Domain][ref-odd]
+59. [ASIL Levels][ref-asil]
+60. [Functional Safety][ref-functional-safety]
+61. [HARA Process][ref-hara]
+62. [Scenario Taxonomy / ASAM OpenX][ref-asam-openx]
 
 [ref-ros2]: https://docs.ros.org
 [ref-isaac-sim]: https://docs.isaacsim.omniverse.nvidia.com
@@ -219,3 +239,10 @@
 [ref-esdf]: https://ieeexplore.ieee.org/document/6379367
 [ref-astar]: https://en.wikipedia.org/wiki/A*_search_algorithm
 [ref-dstar]: https://en.wikipedia.org/wiki/D*
+[ref-iso26262]: https://www.iso.org/standard/81169.html
+[ref-sotif]: https://www.iso.org/standard/70939.html
+[ref-odd]: https://en.wikipedia.org/wiki/Operational_design_domain
+[ref-asil]: https://en.wikipedia.org/wiki/Automotive_Safety_Integrity_Level
+[ref-functional-safety]: https://en.wikipedia.org/wiki/Functional_safety
+[ref-hara]: https://en.wikipedia.org/wiki/ISO_26262#Hazard_analysis_and_risk_assessment
+[ref-asam-openx]: https://www.asam.net/standards/detail/openx/

@@ -86,6 +86,59 @@ Algorithms: Hybrid A*, lattice planners, graph search over lane graph, polynomia
 - Rulebook layering: traffic rules → comfort → efficiency.
 - Redundancy: independent perception checkers, fallback deceleration policy.
 
+### 8.1 Functional Safety (ISO 26262) vs SOTIF (ISO 21448)
+
+| Aspect | Functional Safety (ISO 26262) | SOTIF (ISO 21448) |
+|--------|-------------------------------|-------------------|
+| Primary Focus | Random hardware faults & systematic faults in E/E systems | Performance limitations & inappropriate triggering conditions with no fault present |
+| Core Process | HARA → ASIL classification → Safety Goals → Functional / Technical Safety Requirements | Scenario & triggering condition identification → improvement measures → validation of sufficient coverage |
+| Risk Metric | ASIL (A–D) derived from Severity (S), Exposure (E), Controllability (C) | Qualitative/quantitative residual risk justification (no ASIL) |
+| Output Artifacts | Item definition, hazard log, safety goals, safety case (GSN) | ODD definition, known safe/unsafe/unknown scenario register, trigger mitigation log, coverage argument |
+| Typical Mitigations | Redundancy, diagnostics, safe states (fail-safe / fail-operational), monitoring | ODD refinement, perception robustness, sensor fusion, runtime confidence monitors, driver fallback interface (if applicable) |
+
+Key Terms (see Glossary): ASIL, ODD, HARA, Safety Goal, SOTIF, Triggering Condition, Residual Risk, Scenario Taxonomy.
+
+### 8.2 Combined Workflow (Pragmatic Steps)
+
+1. Draft item definition & initial ODD boundaries (road classes, weather, lighting, speed).
+2. Perform HARA on malfunction scenarios (deviations from intended function) → derive Safety Goals (ASIL).
+3. In parallel, enumerate SOTIF triggering conditions (performance limitations) using a scenario taxonomy (e.g., ASAM OpenX) — classify as known safe, known unsafe, unknown.
+4. Implement mitigations: (a) functional safety mechanisms (diagnostics, watchdogs, redundancy) for high ASIL goals; (b) SOTIF improvements (data augmentation, sensor fusion, temporal tracking, uncertainty-aware planning) for unsafe triggers.
+5. Iterate: new field/simulation scenarios promote unknown → known (safe or unsafe).
+6. Build safety argument: integrate both pillars in a unified safety case (GSN) showing traceability from hazards & triggers to mitigations & evidence (KPIs, test coverage, scenario statistics).
+7. Justify residual risk: remaining unknown scenarios or low-frequency triggers accepted within ODD constraints; refine ODD if justification weak.
+
+### 8.3 Perception & Prediction Safety KPIs
+
+Slice metrics by risk-relevant context (night, rain, occlusion, VRUs):
+
+- False Negative Rate (pedestrians / cyclists) per ODD slice.
+- Latency distribution (P95, P99) vs braking distance budget.
+- Calibration drift detection latency (extrinsics, time sync).
+- Prediction miss rate for short-horizon cut-in vs long-horizon lane-keeping.
+- Confidence calibration (Brier score) on critical object classes.
+
+### 8.4 Common Pitfalls
+
+- Mixing performance limitations and fault-induced hazards in one undifferentiated list (blurs ASIL rationale).
+- Assigning ASIL to pure SOTIF triggers (SOTIF artifacts supplement, not replace, ASIL classification).
+- Under-specified ODD inflating unknown scenario space.
+- Counting raw simulation scenario totals as coverage without taxonomy-driven equivalence classes and risk weighting.
+- Lack of monitoring for distribution shift → late detection of new triggering conditions.
+
+### 8.5 Runtime Monitoring Examples
+
+- Redundant perception channel plausibility (LiDAR vs camera occupancy disagreement threshold).
+- Planner risk heatmap (minimum Time-to-Collision trends) feeding adaptive speed caps.
+- Out-of-distribution detector on perception embeddings gating high-confidence actuation.
+- Degradation triggers: escalating from nominal → cautious (speed reduction) → fallback trajectory (controlled stop) when confidence drops below thresholds.
+
+### 8.6 Integration Pointers
+
+- Link each Safety Goal to concrete planner or perception monitors providing diagnostic coverage.
+- Maintain a scenario → test asset mapping (simulation seeds, log replays) to demonstrate regression protection for previously unsafe triggers.
+- Automate periodic ODD re-validation (environment telemetry sampling vs declared ODD constraints).
+
 ## 9. Control Strategies
 
 Longitudinal: PID vs model predictive speed control (speed limit, curvature adaptation).
