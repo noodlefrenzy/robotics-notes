@@ -29,6 +29,7 @@ version: 0.1.0
 | Planning & Manipulation | [docs/robotics_deep_dive_planning_manipulation.md](docs/robotics_deep_dive_planning_manipulation.md) |
 | RL Frameworks & Training Pipelines | [docs/robotics_deep_dive_rl_frameworks.md](docs/robotics_deep_dive_rl_frameworks.md) |
 | World / VLM / Foundation Models | [docs/robotics_deep_dive_models_world_vlm.md](docs/robotics_deep_dive_models_world_vlm.md) |
+| Spot Platform & SDK | [docs/robotics_deep_dive_spot_platform.md](docs/robotics_deep_dive_spot_platform.md) |
 | ADS Perception | [docs/ads_deep_dive_perception.md](docs/ads_deep_dive_perception.md) |
 | ADS Prediction | [docs/ads_deep_dive_prediction.md](docs/ads_deep_dive_prediction.md) |
 | ADS Planning & Control | [docs/ads_deep_dive_planning_control.md](docs/ads_deep_dive_planning_control.md) |

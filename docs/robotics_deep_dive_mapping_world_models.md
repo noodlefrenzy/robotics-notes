@@ -82,3 +82,4 @@ Explores mapping layers (occupancy, TSDF/ESDF, semantic, relational) and their f
 - OctoMap papers
 - Probabilistic robotics (Thrun et al.)
 - Scene graph survey literature
+- See also: `robotics_deep_dive_spot_platform.md` for an applied example of topological (GraphNav) + local terrain modeling integration.

@@ -101,3 +101,4 @@ Metrics: Kernel occupancy, mem BW utilization, copy-to-compute ratio, end-to-end
 - CUDA Programming Guide (streams, graphs)
 - ros2_tracing & tracing QoS patterns
 - Iceoryx shared memory middleware
+- See also: `robotics_deep_dive_spot_platform.md` for practical latency budgeting and payload compute integration patterns.

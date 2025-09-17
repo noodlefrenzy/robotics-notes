@@ -88,3 +88,4 @@ Covers motion & task-level planning for mobile manipulators: sampling, optimizat
 - OMPL planning algorithms
 - Behavior tree design patterns
 - Ruckig time parameterization
+- See also: `robotics_deep_dive_spot_platform.md` for mission sequencing and locomotion navigation interplay (GraphNav + foothold planning abstractions).

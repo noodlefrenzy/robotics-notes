@@ -23,6 +23,7 @@ Central navigation hub for robotics and autonomous driving knowledge base.
 - [Simulation & Digital Twins](robotics_deep_dive_simulation.md)
 - [Planning & Manipulation](robotics_deep_dive_planning_manipulation.md)
 - [Mapping & World Models](robotics_deep_dive_mapping_world_models.md)
+- [Spot Platform & SDK](robotics_deep_dive_spot_platform.md)
 
 ## ADS Deep Dives
 

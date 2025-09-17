@@ -91,6 +91,7 @@ Created separate deep dive files:
 - [Simulation & Digital Twins](robotics_deep_dive_simulation.md)
 - [Planning & Manipulation](robotics_deep_dive_planning_manipulation.md)
 - [Mapping & World Models](robotics_deep_dive_mapping_world_models.md)
+- [Spot Platform & SDK](robotics_deep_dive_spot_platform.md)
 
 ---
 Related domain: Autonomous Driving – see [Basic ADS Notes](basic_ads_notes.md) for perception→planning pipelines, with cross-links back to these robotics foundations.
