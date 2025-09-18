@@ -90,6 +90,7 @@ Created separate deep dive files:
 - [World, Vision-Language(-Action) & Foundation Models](robotics_deep_dive_models_world_vlm.md)
 - [Simulation & Digital Twins](robotics_deep_dive_simulation.md)
 - [Planning & Manipulation](robotics_deep_dive_planning_manipulation.md)
+- [Control Theory & Controllers](robotics_deep_dive_control_theory.md)
 - [Mapping & World Models](robotics_deep_dive_mapping_world_models.md)
 - [Spot Platform & SDK](robotics_deep_dive_spot_platform.md)
 
