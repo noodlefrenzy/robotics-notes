@@ -349,6 +349,113 @@ Where:
 - Replay logs for perception consistency
 - Regression set for mission graph changes
 
+## Off-Hardware Development & Emulation
+
+When the physical robot is unavailable, employ layered abstractions to advance software reliability without locomotion fidelity.
+
+### Objectives Without Hardware
+
+- Validate session orchestration (auth → time sync → lease lifecycle)
+- Exercise mission graph sequencing & recovery logic
+- Integrate perception / ML pipelines using synthetic or recorded data
+- Run robustness regressions (lease revocation, latency, time skew)
+
+### Emulation Fidelity Ladder
+
+| Level | Goal | Mechanism | Exit Criterion |
+|-------|------|----------|----------------|
+| L0 | Compile & run | Always-success stubs | Session script completes |
+| L1 | Stateful logic | In-memory mock state (pose, lease) | Mission & lease tests pass |
+| L2 | Timing realism | Telemetry replay (JSON / rosbag2) | Perception loop timing validated |
+| L3 | Kinematic approximation | Quadruped sim adapter (Isaac/Gazebo) | Closed-loop waypoint tracking |
+| L4 | Fault robustness | Inject latency, revokes, time skew | All scenarios recover or fail-safe |
+
+### Core Interfaces (Illustrative)
+
+```
+interface LeaseClient { acquire(resource); keepAlive(id); release(id); }
+interface MobilityClient { stand(); sit(); velocity(vx, vy, yaw_rate, dt); }
+interface GraphNavClient { navigateTo(waypoint_id); feedback(); }
+interface TimeSyncClient { sync(iterations) -> offset; }
+```
+
+These allow dependency injection of real SDK vs mocks.
+
+### Synthetic Graph Example
+
+Nodes: wp_start, wp_scan, wp_exit; Edges: start→scan, scan→exit. Used for mission unit tests verifying waypoint transition events and timing.
+
+### Fault Scenario Spec (YAML)
+
+```yaml
+scenarios:
+    - name: lease_revoked
+        events:
+            - t: 8.0
+                action: revoke_lease
+    - name: time_skew
+        events:
+            - t: 3.0
+                action: skew_time
+                params: { delta_ms: 25 }
+    - name: mobility_latency
+        inject:
+            mobility_latency_ms: [0, 50, 120]
+```
+
+Harness consumes scenario spec, mutates mocks, exports JSON metrics (recovery_time, missed_keepalives, latency_histogram).
+
+### Trackable Pre-Hardware Metrics
+
+| Category | Metric | Purpose |
+|----------|--------|---------|
+| Session | Time sync convergence iterations | SLA budgeting |
+| Lease | Keep-alive jitter & renew failures | Robustness |
+| Mission | Waypoint transition latency | Orchestration health |
+| Fault | Recovery time after injection | Safety validation |
+| Perception | Frame processing latency p95 | Throughput planning |
+| Logging | Event loss rate | Trace completeness |
+
+### Migration Path (Pre → On Hardware)
+
+| Artifact | Pre-HW | On-HW Adjustment |
+|----------|--------|------------------|
+| State model | Deterministic mock | Tune with real noise stats |
+| Graph | Synthetic 3-node | Replace with real GraphNav map |
+| Fault harness | Simulated events | Validate real lease preemption |
+| Time sync offsets | Synthetic distribution | Narrow to measured skew |
+| Perception timing | Desktop payload sim | Benchmark on Spot Core |
+
+Cross-links: `robotics_deep_dive_control_theory.md` (robust controller tuning) and `robotics_deep_dive_simulation.md` (synthetic sensor generation).
+
+## Integration With Wider Stack
+
+Planned synergy with prospective orchestration (e.g., batch scenario tools):
+
+- Nightly mission regression across fault matrix
+- Synthetic dataset generation for perception domain shift (lighting / weather)
+- Controller robustness sweeps (friction, payload mass) feeding tuning loops
+
+Proposed repository scaffold:
+
+```text
+spot/
+    mocks/
+    scenarios/
+    tests/
+    README.md
+```
+
+## Pre-Hardware Readiness Checklist
+
+- [ ] Interfaces & dependency injection complete
+- [ ] L1 stateful mock mission + lease tests passing
+- [ ] Fault scenario YAML executed in CI producing metrics
+- [ ] Log schema versioned (pose, lease, command timeline)
+- [ ] Synthetic perception pipeline deterministic outputs
+- [ ] Cross-links added in related deep dives
+
+
 ## Operational Best Practices
 
 - Always verify time sync before high-rate telemetry sessions
